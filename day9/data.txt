@@ -1,0 +1,2 @@
+Hello! This text is loaded from data.txt using AJAX.
+You clicked the button and now you're seeing this.

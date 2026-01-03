@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Try-Catch-Finally Demo</title>
+  
+</head>
+<body>
+
+  <h2>Division Calculator with Error Handling</h2>
+  
+  <label>Number A: <input type="number" id="numA" value="10" /></label><br/><br/>
+  <label>Number B: <input type="number" id="numB" value="0" /></label><br/><br/>
+  <button id="divideBtn">Divide</button>
+  
+  <div id="output"></div>
+
+  <script>
+    const output = document.getElementById('output');
+    const btn = document.getElementById('divideBtn');
+
+    btn.addEventListener('click', () => {
+      const a = Number(document.getElementById('numA').value);
+      const b = Number(document.getElementById('numB').value);
+
+      output.innerHTML = '';  // clear previous output
+
+      try {
+        if (b === 0) {
+          throw new Error("Cannot divide by zero!");
+        }
+        const result = a / b;
+        output.innerHTML += `<p>Result: ${result}</p>`;
+      } catch (error) {
+        output.innerHTML += `<p style="color: red;">Error: ${error.message}</p>`;
+      } finally {
+        output.innerHTML += `<p><em>Operation finished.</em></p>`;
+      }
+    });
+  </script>
+
+</body>
+</html>

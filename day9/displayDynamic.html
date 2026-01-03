@@ -1,0 +1,22 @@
+<html>
+    <head>
+      <script src="jquery-3.7.1.min.js"></script>     
+    </head>
+    <body>
+        <h2>Display Data</h2>
+        <label for="enter the name"></label>
+        <input type="text" id="t1" name="name">
+        <button id="b1" onclick="display()">click</button>
+        <p id="p1" ></p>
+
+        <script>
+            $(document).ready(function(){
+                $("#b1").click(function(){
+                    let data = $("#t1").val();
+                 $("#p1").text(data);
+                })
+            })
+        </script>
+
+    </body>
+</html>

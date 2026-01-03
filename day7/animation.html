@@ -1,0 +1,26 @@
+<html>
+
+<body onload="myMove()">
+    <div id="d1" style="background-color: black; width: 50px; height: 50px; position: absolute;"></div>
+
+</body>
+<script>
+    function myMove() {
+        let position = 0;
+        let element = document.getElementById("d1");
+        const i1 = setInterval(frame, 5);
+        function frame() {
+            if (position == 450) {
+                clearInterval(i1);
+            }
+            else
+            {
+                position++;
+                element.style.top = position +"px";
+                element.style.left = position+"px";
+            }
+        }
+    }
+</script>
+
+</html>

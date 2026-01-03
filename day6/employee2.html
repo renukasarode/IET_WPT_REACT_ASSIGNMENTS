@@ -1,0 +1,98 @@
+<html>
+<head>
+    <title>Employee Management</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #6285a1;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h2>Employee Management System</h2>
+
+    <label>Name</label>
+    <input type="text" placeholder="Enter the name" id="employeeName">
+    <br>
+
+    <label>Email</label>
+    <input type="text" placeholder="Enter the email address" id="employeeEmail">
+    <br>
+
+    <label>Mobile</label>
+    <input type="text" placeholder="Enter the mobile number" id="employeeMobile">
+    <br>
+
+    <label>Address</label>
+    <textarea id="employeeAddress" placeholder="Enter the address"></textarea>
+    <br>
+
+    <button onclick="addData()">Add</button>
+
+    <table id="tableDataEmployee">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Address</th>
+            <th>Action</th>
+        </tr>
+    </table>
+
+    <script>
+        function addData() {
+            let name = document.getElementById("employeeName").value;
+            let email = document.getElementById("employeeEmail").value;
+            let mobileNumber = document.getElementById("employeeMobile").value;
+            let address = document.getElementById("employeeAddress").value;
+
+            let tableData = document.getElementById("tableDataEmployee");
+            let newRow = tableData.insertRow(tableData.rows.length);
+
+            newRow.insertCell(0).innerHTML = name;
+            newRow.insertCell(1).innerHTML = email;
+            newRow.insertCell(2).innerHTML = mobileNumber;
+            newRow.insertCell(3).innerHTML = address;
+            newRow.insertCell(4).innerHTML =
+                '<button onclick="editData(this)">Edit</button> ' +
+                '<button onclick="deleteData(this)">Delete</button>';
+        }
+
+        function editData(button) {
+            let row = button.parentNode.parentNode;
+            let nameCell = row.cells[0];
+            let emailCell = row.cells[1];
+            let mobileCell = row.cells[2];
+            let addressCell = row.cells[3];
+
+            let nameInput = prompt("Enter the updated name", nameCell.innerHTML);
+            let emailInput = prompt("Enter the updated email", emailCell.innerHTML);
+            let mobileInput = prompt("Enter the updated mobile", mobileCell.innerHTML);
+            let addressInput = prompt("Enter the updated address", addressCell.innerHTML);
+
+            nameCell.innerHTML = nameInput;
+            emailCell.innerHTML = emailInput;
+            mobileCell.innerHTML = mobileInput;
+            addressCell.innerHTML = addressInput;
+        }
+
+        function deleteData(button) {
+            let row = button.parentNode.parentNode;
+            row.remove();
+        }
+    </script>
+</body>
+</html>

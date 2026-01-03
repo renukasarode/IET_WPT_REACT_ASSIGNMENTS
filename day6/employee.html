@@ -1,0 +1,115 @@
+<html>
+    <head>
+        <title>
+            employee management
+        </title>
+        <style>
+             table {
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #6285a1;
+            color: #fff;
+        }
+        </style>
+    </head>
+    <body>
+        <h2>employee management system</h2>
+        <label>name</label>
+        <input type="text" placeholder="enter the name" id="employeeName">
+        <br>
+        <label>Email</label>
+        <input type="text" placeholder="enter the email address" id="employeeEmail">
+         <br>
+        <label>Mobile</label>
+        <input type="text" placeholder="enter the mobile number" id="employeeMobile">
+         <br>
+        <label>Address></label>
+        <input type="text" placeholder="enter the Address" id="employeeAddress">
+         <br>
+        <textarea id="textarea" placeholder="enter the address"></textarea>
+        <br>
+        <button onclick="addData()">Add</button>
+        <div class="error" id="errorMsg"></div>
+        <table id="tableDataEmployee">
+            <tr>
+                <th>name</th>
+                <th>Email</th>
+                <th>mobile</th>
+                <th>Emp address</th>
+                <th>Action</th>
+            </tr>
+        </table>
+
+        <script>
+            function addData()
+            {
+                let name = document.getElementById("employeeName").value;
+                let email = document.getElementById("employeeEmail").value;
+                let mobileNumber =document.getElementById("employeeMobile").value;
+                let address = document.getElementById("employeeAddress").value;
+
+                let tableData = document.getElementById("tableDataEmployee");
+                // let rowLength = table.insertR(table.rows.length);
+
+                errorMsg.innerHTML="";
+                if(name==="" || email==="" || mobileNumber===""|| address==="")
+                {
+                    errorMsg.innerHTML="please fill the all the fields";
+                    return;
+                }
+                
+                let newRow = tableData.insertRow(tableData.rows.length);
+               
+                newRow.insertCell(0).innerHTML= name;
+                newRow.insertCell(1).innerHTML= email;
+                newRow.insertCell(2).innerHTML= mobileNumber;
+                newRow.insertCell(3).innerHTML= address;
+                newRow.insertCell(4).innerHTML= 
+                 '<button onclick="editData(this)">Edit</button>' +
+                '<button onclick="deleteData(this)">Delete</button>'; 
+            }
+            function editData(button)
+            {
+                let row = button.parentNode.parentNode;
+                let nameCell = row.cells[0];
+                let emailCell = row.cells[1];
+                let mobileCell = row.cells[2];
+                let addressCell = row.cells[3];
+
+                let nameInput = prompt("enter the updated name",nameCell.innerHTML);
+                let emailInput = prompt("enter the updated email",emailCell.innerHTML);
+                let mobileInput = prompt("enter the updated mobile",mobileCell.innerHTML);
+                let addressInput  = prompt("enter the updated address",addressCell.innerHTML);
+                 if(nameInput && emailInput && mobileInput && addressInput)
+                 {
+                 nameCell.innerHTML = nameInput;
+                 emailCell.innerHTML = emailInput;
+                 mobileCell.innerHTML = mobileInput;
+                 addressCell.innerHTML = addressInput;
+                 }
+                 else
+                 {
+                    alert("please fill all the fields");
+                 }
+            }
+
+            function deleteData(button)
+            {
+                let row = button.parentNode.parentNode;
+                row.parentNode.removeChild(row);
+            }
+        </script>
+
+    </body>
+</html>

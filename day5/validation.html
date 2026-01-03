@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      function onClickButton()
+      {
+         alert("we are in the function");
+         console.log("hello")
+         return false;
+      }
+    </script> 
+    <form name="form1" onsubmit="return onClickButton()">
+    <label>userName</label>
+    <input type="text" value="enter the name">
+    <br>
+    <label>age</label>
+    <input type="text" value="enter the age">
+    <br>
+    <input type="submit" value="submit"></form>
+
+</body>
+
+</html>

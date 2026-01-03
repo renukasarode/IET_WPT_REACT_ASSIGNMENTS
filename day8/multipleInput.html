@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <script src="jquery-3.7.1.min.js"></script>
+        <style>
+          #t3 {
+    font-style: italic;
+    text-decoration: underline;
+}
+        </style>
+   
+    <script>
+      
+         $(document).ready(function(){
+            $("button").click(function(){
+            let a = $("#t1").val();
+          
+           $("#t2").val(a).css("font-style", "italic");
+           $("#t3").val(a);
+            let c = "<p>"+a+"</p>";
+            $("button").after(c);
+         });
+       });
+    
+    </script>
+      </head>
+    <body>
+         <p>multiple Input</p>
+         <label for="t1">enter text</label>
+         <input type="text" id="t1"><br>
+         <input type="text" id="t2">
+          <input type="text" id="t3">
+         <button id="b1" value="click">click</button>
+    </body>
+    
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AJAX Load Posts and Display in Table</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    button {
+      padding: 8px 14px;
+      font-size: 16px;
+    }
+    table {
+      margin-top: 20px;
+      border-collapse: collapse;
+      width: 100%;
+      max-width: 600px;
+    }
+    table, th, td {
+      border: 1px solid #444;
+    }
+    th, td {
+      padding: 8px 12px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    #output {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Load Posts Data with AJAX</h2>
+  <button onclick="loadPosts()">Load Posts</button>
+
+  <div id="output">Table will appear here...</div>
+
+  <script>
+    function loadPosts() {
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', 'https://jsonplaceholder.typicode.com/posts', true);
+
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          const posts = JSON.parse(xhr.responseText);
+
+          let tableHTML = `<table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Title</th>
+              </tr>
+            </thead>
+            <tbody>`;
+
+          posts.forEach(post => {
+            tableHTML += `
+              <tr>
+                <td>${post.id}</td>
+                <td>${post.title}</td>
+              </tr>
+            `;
+          });
+
+          tableHTML += '</tbody></table>';
+
+          document.getElementById('output').innerHTML = tableHTML;
+        } else {
+          document.getElementById('output').textContent = 'Failed to load posts. Status: ' + xhr.status;
+        }
+      };
+
+      xhr.onerror = function () {
+        document.getElementById('output').textContent = 'Request error.';
+      };
+
+      xhr.send();
+    }
+  </script>
+
+</body>
+</html>

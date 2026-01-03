@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="d1" style="background-color: aqua; ">
+    <h2>MultiLine elements</h2>
+    <label for="i1">paragraph</label>
+    <textarea id="i1" >Enter the paragraph</textarea>
+    <button onclick="show()" id="i2">click me!</button>
+   
+    <p id="p1" style="background-color: cadetblue;"></p>
+    </div>
+
+    <script>
+        function show()
+        {
+            let data = document.getElementById("i1").value;
+            
+            let d1 = data.slice(0,data.length/2);
+            let d2= data.slice(data.length/2,data.length);
+            // console.log("d1",d1);
+            // console.log("d2",d2);
+            //console.log("data",data);
+            document.getElementById("p1").innerHTML = "the entered data is: "+d1+"<br>"+d2;
+        }
+    </script>
+
+
+    
+</body>
+</html>

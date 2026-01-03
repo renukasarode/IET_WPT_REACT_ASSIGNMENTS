@@ -1,0 +1,25 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h2>dispaly name</h2>
+        <lable for="t1">Enter Name</lable>
+        <input type="text" required id="t1" name="Name"><br>
+        <button id="btn" onclick="display()">click</button>
+        <p id="p1"></p>
+        <script>
+         function display()
+         {
+            let elementS = document.getElementById("t1");
+            if(elementS.checkValidity())
+         {
+            document.getElementById("p1").innerHTML = "the data is "+elementS.value;
+         }
+         else{
+            document.getElementById("p1").innerHTML = elementS.validationMessage;
+         }
+         }
+        </script>
+    </body>
+</html>

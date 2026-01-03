@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <script src="jquery-3.7.1.min.js"></script>
+    </head>
+    <body>
+        <label for="i1">enter number</label>
+        <input type="number" id="i1">
+        <button id="b1" onclick="show()">click</button>
+        <p id="p1"></p>
+        <br>
+
+        <script>
+            // $(document).click(function(){
+               
+            // })
+        // function show()
+        // {
+        //      let number = parseInt(document.getElementById("i1").value); 
+        //     let mul = 1; 
+
+        //     if (number < 0) {
+        //         document.getElementById("p1").innerHTML = "Invalid input. Factorial is not defined for negative numbers.";
+        //         return;
+        //     }
+
+        //      for(let i=number;i>=1;i--)
+        //      {
+        //         mul = mul*i;
+        //      }
+        //      document.getElementById("p1").innerHTML = "factorial of number is "+mul;   
+        //     }     
+          $(document).ready(function() {
+            $('#b1').click(function() {
+                let number = parseInt($('#i1').val());
+                let mul = 1;
+
+                if (isNaN(number)) {
+                    $('#p1').text("Please enter a valid number.");
+                    return;
+                }
+
+                if (number < 0) {
+                    $('#p1').text("Invalid input. Factorial is not defined for negative numbers.");
+                    return;
+                }
+
+                for (let i = number; i >= 1; i--) {
+                    mul *= i;
+                }
+
+                $('#p1').text("Factorial of number is " + mul);
+            });
+        });
+    </script>
+
+        </script>
+    </body>
+
+</html>
